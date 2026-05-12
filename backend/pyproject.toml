@@ -1,0 +1,102 @@
+[project]
+name = "bee-api"
+version = "0.1.0"
+description = "OSINT tool for news intelligence, signal extraction, and NLP-based analysis."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Bee API contributors" },
+]
+keywords = ["api", "fastapi", "news-intelligence", "llm", "osint"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: FastAPI",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+  "Topic :: Text Processing :: Linguistic",
+]
+
+dependencies = [
+  "fastapi>=0.115.8,<1",
+  "uvicorn>=0.34.0,<1",
+  "gunicorn>=23.0.0,<24",
+  "pydantic>=2.10.6,<3",
+  "pydantic-settings>=2.2,<3",
+  "SQLAlchemy>=2.0.36,<3",
+  "psycopg2-binary>=2.9,<3",
+  "APScheduler>=3.10.4,<4",
+  "loguru>=0.7.3,<1",
+  "python-dateutil>=2.9.0.post0,<3",
+  "readability-lxml>=0.8.1,<1",
+  "scrapling>=0.4.7,<1",
+  "groq==0.9.0",
+  "python-jose[cryptography]>=3.5.0",
+  "passlib[bcrypt]>=1.7.4",
+  "python-multipart>=0.0.22",
+  "email-validator>=2.3.0",
+  "bcrypt==4.0.1",
+  "alembic>=1.18.4",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<10",
+  "pytest-cov>=4,<5",
+  "ruff>=0.6,<1",
+  "pre-commit>=4,<5",
+  "anyio>=4,<5",
+  "pytest-env>=1,<2",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.pytest.ini_options]
+addopts = "-p no:unraisableexception"
+anyio_mode = "auto"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "PL", "RET"]
+ignore = ["D"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/api/**/*.py" = ["B008"]
+"app/repositories/news_repository.py" = ["PLR0912"]
+"app/services/graph_service.py" = ["PLR0912"]
+"app/services/news_service.py" = [
+  "E501",
+  "PLR0911",
+  "PLR0912",
+  "PLR0915",
+  "PLR2004",
+  "PLW2901",
+  "RET504",
+]
+"app/utils/http_utils.py" = ["E501"]
+"app/utils/nlp.py" = ["E501", "PLR2004", "PLW2901"]
+"tests/*" = ["S101"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.format]
+quote-style = "double"
+
+[fastapi-template.options]
+project_name = "api"
+api_type = "rest"
+orm = "sqlalchemy"
+enable_routers = "True"
+gunicorn = "True"
+ci_type = "none"

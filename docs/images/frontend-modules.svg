@@ -1,0 +1,43 @@
+<svg width="1200" height="650" viewBox="0 0 1200 650" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Bee frontend modules</title>
+  <desc id="desc">Overview of the main frontend modules and the backend endpoints they use.</desc>
+  <rect width="1200" height="650" fill="#f8fafc"/>
+  <text x="56" y="70" fill="#203958" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700">Frontend Application Modules</text>
+  <text x="56" y="100" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">The React dashboard is organized around operational OSINT workflows.</text>
+
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="56" y="150" width="330" height="132" rx="12" fill="#ffffff" stroke="#d8e2f1"/>
+    <text x="86" y="190" fill="#203958" font-size="20" font-weight="700">Dashboard</text>
+    <text x="86" y="222" fill="#64748b" font-size="14">KPIs, sentiment, trends, locations</text>
+    <text x="86" y="246" fill="#64748b" font-size="14">and active OSINT source activity.</text>
+
+    <rect x="435" y="150" width="330" height="132" rx="12" fill="#ffffff" stroke="#d8e2f1"/>
+    <text x="465" y="190" fill="#203958" font-size="20" font-weight="700">News</text>
+    <text x="465" y="222" fill="#64748b" font-size="14">Recent articles, summaries, entities,</text>
+    <text x="465" y="246" fill="#64748b" font-size="14">sentiment labels, and source links.</text>
+
+    <rect x="814" y="150" width="330" height="132" rx="12" fill="#ffffff" stroke="#d8e2f1"/>
+    <text x="844" y="190" fill="#203958" font-size="20" font-weight="700">OSINT Sources</text>
+    <text x="844" y="222" fill="#64748b" font-size="14">Create, edit, delete, activate,</text>
+    <text x="844" y="246" fill="#64748b" font-size="14">and deactivate source URLs.</text>
+
+    <rect x="56" y="330" width="330" height="132" rx="12" fill="#ffffff" stroke="#d8e2f1"/>
+    <text x="86" y="370" fill="#203958" font-size="20" font-weight="700">Word List</text>
+    <text x="86" y="402" fill="#64748b" font-size="14">Topic terms, manual search run,</text>
+    <text x="86" y="426" fill="#64748b" font-size="14">matches, alerts, and source summary.</text>
+
+    <rect x="435" y="330" width="330" height="132" rx="12" fill="#ffffff" stroke="#d8e2f1"/>
+    <text x="465" y="370" fill="#203958" font-size="20" font-weight="700">Records and Notes</text>
+    <text x="465" y="402" fill="#64748b" font-size="14">Investigation records, documents,</text>
+    <text x="465" y="426" fill="#64748b" font-size="14">Markdown notes, and image uploads.</text>
+
+    <rect x="814" y="330" width="330" height="132" rx="12" fill="#ffffff" stroke="#d8e2f1"/>
+    <text x="844" y="370" fill="#203958" font-size="20" font-weight="700">Relationship Graphs</text>
+    <text x="844" y="402" fill="#64748b" font-size="14">Cytoscape graph workspace for</text>
+    <text x="844" y="426" fill="#64748b" font-size="14">entities, records, news, and links.</text>
+
+    <rect x="250" y="520" width="700" height="76" rx="12" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="290" y="552" fill="#17345c" font-size="19" font-weight="700">Shared App Shell</text>
+    <text x="290" y="576" fill="#64748b" font-size="14">Auth context, protected routes, sidebar navigation, open tabs, notifications, Axios API client.</text>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+services:
+  api: &main_app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: api:${API_VERSION:-latest}
+    restart: always
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      API_HOST: 0.0.0.0
+      API_DB_FILE: /db_data/db.sqlite3
+    volumes:
+      - api-db-data:/db_data/
+
+
+
+volumes:
+  api-db-data:
+    name: api-db-data

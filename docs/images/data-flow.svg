@@ -1,0 +1,58 @@
+<svg width="1200" height="560" viewBox="0 0 1200 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Bee OSINT data flow</title>
+  <desc id="desc">Data flow from OSINT sources through scraping, storage, analytics, Word List matching, and frontend reporting.</desc>
+  <rect width="1200" height="560" fill="#ffffff"/>
+  <text x="62" y="70" fill="#203958" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700">OSINT Data Flow</text>
+  <text x="62" y="100" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">How sources become intelligence inside Bee.</text>
+
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="62" y="170" width="176" height="96" rx="12" fill="#fff1f2" stroke="#e04758"/>
+    <text x="94" y="212" fill="#7f1d1d" font-size="18" font-weight="700">OSINT</text>
+    <text x="94" y="236" fill="#7f1d1d" font-size="18" font-weight="700">Sources</text>
+
+    <rect x="298" y="170" width="176" height="96" rx="12" fill="#f5f3ff" stroke="#8b5cf6"/>
+    <text x="333" y="212" fill="#3b236d" font-size="18" font-weight="700">Scraper</text>
+    <text x="333" y="236" fill="#64748b" font-size="14">Scheduled or manual</text>
+
+    <rect x="534" y="170" width="176" height="96" rx="12" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="568" y="212" fill="#17345c" font-size="18" font-weight="700">News Store</text>
+    <text x="568" y="236" fill="#64748b" font-size="14">Articles and metadata</text>
+
+    <rect x="770" y="170" width="176" height="96" rx="12" fill="#ecfdf5" stroke="#36bd7d"/>
+    <text x="804" y="212" fill="#0f5132" font-size="18" font-weight="700">Analysis</text>
+    <text x="804" y="236" fill="#64748b" font-size="14">Entities and sentiment</text>
+
+    <rect x="1006" y="170" width="132" height="96" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="1034" y="212" fill="#203958" font-size="18" font-weight="700">UI</text>
+    <text x="1034" y="236" fill="#64748b" font-size="14">Dashboard</text>
+
+    <path d="M238 218H298" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M474 218H534" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M710 218H770" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M946 218H1006" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="298" y="350" width="176" height="96" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="326" y="390" fill="#7c3d00" font-size="18" font-weight="700">Word Lists</text>
+    <text x="326" y="416" fill="#64748b" font-size="14">Topic terms</text>
+
+    <rect x="534" y="350" width="176" height="96" rx="12" fill="#ecfeff" stroke="#06b6d4"/>
+    <text x="568" y="390" fill="#164e63" font-size="18" font-weight="700">Matches</text>
+    <text x="568" y="416" fill="#64748b" font-size="14">Alerts and news links</text>
+
+    <rect x="770" y="350" width="176" height="96" rx="12" fill="#f0fdfa" stroke="#14b8a6"/>
+    <text x="804" y="390" fill="#134e4a" font-size="18" font-weight="700">Graphs</text>
+    <text x="804" y="416" fill="#64748b" font-size="14">Records and relations</text>
+
+    <path d="M386 350V266" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M474 398H534" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M622 350V266" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M710 398H770" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M946 398C1000 398 1030 320 1054 266" stroke="#64748b" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  </g>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

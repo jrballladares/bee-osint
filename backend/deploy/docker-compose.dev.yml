@@ -1,0 +1,20 @@
+services:
+  api:
+    # Exposes application port (host:container)
+    ports:
+      - "8000:8000"
+    # Build configuration (uses Dockerfile in current directory)
+    build:
+      context: .
+    # Mount current project into container (for live reload in dev)
+    volumes:
+      - .:/app
+    # Environment variables (currently unused unless your app reads it)
+    environment:
+      - API_RELOAD=True
+    # Start FastAPI server with autoreload (development only)
+    command: >
+      uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
