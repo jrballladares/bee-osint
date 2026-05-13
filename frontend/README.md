@@ -4,15 +4,15 @@ Bee Dashboard Frontend is a React + Vite web application for OSINT-oriented news
 
 ## Features
 
-- Dashboard KPIs and OSINT analytics.
+- JWT authentication with username or email login.
+- Dashboard analytics for KPIs, trends, and sentiment analysis.
 - Global sentiment analysis report with donut chart and source table.
 - News list with sentiment labels, entity tags, detail modal, source links, and pagination.
-- OSINT source CRUD with active/inactive toggles.
+- OSINT source management with active and inactive states.
 - Word List monitoring with manual search execution, matched news, and source summaries.
 - Notes editor with Markdown support and image uploads.
 - Investigation records with personal data, phones, addresses, social links, notes, and document uploads.
-- Interactive relationship graphs powered by Cytoscape.
-- Graph node context menus, layouts, import/export actions, record import, investigation actions, and document download support.
+- Interactive relationship graphs with entity linking, investigations, and record imports.
 
 ## Tech Stack
 
