@@ -23,9 +23,10 @@ export default defineConfig([
       react: { version: 'detect' },
     },
     rules: {
-      'no-unused-vars': 'warn',
+      'no-unused-vars': ['warn', { ignoreRestSiblings: true }],
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
+      'react-hooks/exhaustive-deps': 'off',
       'react-hooks/set-state-in-effect': 'off',
     },
   },

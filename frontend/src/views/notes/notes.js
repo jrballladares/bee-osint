@@ -440,7 +440,6 @@ function WordEditor({
 
 function NoteCard({
   note,
-  index,
   expandedId,
   editingId,
   editContent,
@@ -456,7 +455,6 @@ function NoteCard({
   onUploadImage,
   updatePending,
 }) {
-  const noteId = getNoteId(note, index);
   const isExpanded = expandedId === note?.id;
   const isEditing = editingId === note?.id;
   const preview = notePreview(note?.content);
@@ -847,7 +845,6 @@ const Notes = () => {
                   <NoteCard
                     key={getNoteId(note, index)}
                     note={note}
-                    index={index}
                     expandedId={expandedId}
                     editingId={editingId}
                     editContent={editContent}
