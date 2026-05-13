@@ -478,7 +478,3 @@ Check that:
 ### Uploaded files are not available
 
 Check that the `static/uploads/notes` and `static/uploads/records` directories exist and that the process has write permissions.
-
-## Contributing
-
-Contribution guidelines are centralized at [`../CONTRIBUTING.md`](../CONTRIBUTING.md).
