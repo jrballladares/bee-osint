@@ -1,21 +1,18 @@
 # Bee API Backend
 
-Bee API is a FastAPI backend for OSINT-oriented news intelligence. It stores and analyzes online news, manages OSINT sources, tracks Word List matches, extracts signals for dashboard analytics, supports investigation records, notes, and relationship graphs, and exposes authenticated REST endpoints for the frontend.
+Bee API is a FastAPI backend for OSINT news analysis and investigation workflows. It stores and analyzes online news, manages OSINT sources, tracks Word List matches, extracts signals for dashboard analytics, supports investigation records, notes, and relationship graphs, and exposes authenticated REST endpoints for the frontend.
 
 ## Features
 
-- JWT-based authentication with username or email login.
-- OSINT source management with active/inactive source state.
-- Scheduled news scraping from active OSINT sources.
-- News storage, article extraction, entity extraction, keyword matching, and basic sentiment classification.
-- Dashboard analytics for KPIs, locations, term trends, source activity, and general WEB/TEXT sentiment.
-- Word List monitoring with alerts, matched news, manual refresh, and manual background search execution.
+- JWT authentication with username or email login.
+- OSINT source management with active and inactive states.
+- Scheduled news scraping from active sources.
+- News ingestion, entity extraction, keyword matching, and sentiment analysis.
+- Dashboard analytics for KPIs, trends, locations, source activity, and sentiment analysis.
+- Word List monitoring with alerts, matched news, refresh actions, and background search execution.
 - Notes with image uploads.
-- Person/investigation records with phone numbers, addresses, social links, and document uploads.
-- Relationship graphs with nodes, relationships, record import, node investigation, and document download support.
-- Static file serving for uploaded notes and record documents.
-- Alembic database migrations.
-- Docker and local development workflows.
+- Investigation records with phones, addresses, social links, notes, and document uploads.
+- Relationship graphs with entity linking, investigations, and record imports.
 
 ## Tech Stack
 
@@ -26,9 +23,9 @@ Bee API is a FastAPI backend for OSINT-oriented news intelligence. It stores and
 - Alembic
 - APScheduler
 - Uvicorn / Gunicorn
-- Scrapling and readability-lxml for web extraction
-- Groq SDK for optional LLM-backed workflows
-- Loguru for logging
+- Scrapling and readability-lxml
+- Groq SDK (optional LLM workflows)
+- Loguru
 - Ruff and pytest for development quality checks
 
 ## Project Structure
@@ -63,8 +60,8 @@ backend/
 - Python `>=3.12,<3.13`
 - `uv` package manager
 - SQLite for local development, or PostgreSQL for production-like deployments
-- Optional: Docker and Docker Compose
-- Optional: Groq API key for LLM-backed features
+- Docker and Docker Compose (optional)
+- Groq API key for LLM-backed features (optional)
 
 Install `uv` if needed:
 
@@ -80,7 +77,7 @@ Copy `.env.example` to `.env`:
 cp .env.example .env
 ```
 
-Main settings:
+Core environment settings:
 
 | Variable | Required | Default | Description |
 | --- | --- | --- | --- |
@@ -139,7 +136,7 @@ Create or update the default admin user:
 uv run python default_user.py
 ```
 
-Default development credentials created by `default_user.py`:
+Default development credentials:
 
 ```text
 username: admin
@@ -165,9 +162,9 @@ Useful URLs:
 
 ```text
 Health check: http://127.0.0.1:8000/health
-Swagger UI:   http://127.0.0.1:8000/docs
-OpenAPI JSON: http://127.0.0.1:8000/openapi.json
-API prefix:   http://127.0.0.1:8000/api/v1
+Swagger UI:  http://127.0.0.1:8000/docs
+OpenAPI:     http://127.0.0.1:8000/openapi.json
+API base:    http://127.0.0.1:8000/api/v1
 ```
 
 ## Running With Docker
@@ -188,8 +185,6 @@ The development Compose file exposes the API on port `8000` and runs Uvicorn wit
 
 ## Authentication
 
-Most API endpoints require a bearer token.
-
 Login endpoint:
 
 ```http
@@ -197,7 +192,7 @@ POST /api/v1/auth/login
 Content-Type: application/x-www-form-urlencoded
 ```
 
-Body:
+Request body:
 
 ```text
 username=admin
@@ -213,13 +208,13 @@ Response:
 }
 ```
 
-Use the token in authenticated requests:
+Authenticated requests must include:
 
 ```http
 Authorization: Bearer jwt-token
 ```
 
-Current user:
+Get the current authenticated user:
 
 ```http
 GET /api/v1/auth/me
@@ -268,7 +263,7 @@ News scraping is normally executed by the scheduler from active OSINT sources. N
 | `GET` | `/dashboard/locations` | Top locations and previous-period comparison. |
 | `GET` | `/dashboard/term-trends` | Trending terms from recent news. |
 | `GET` | `/dashboard/source-activity` | Recent source activity ranking. |
-| `GET` | `/dashboard/sentiment` | General WEB/TEXT sentiment report across all stored news in the selected period. |
+| `GET` | `/dashboard/sentiment` | Global sentiment analysis across stored news for the selected period. |
 
 ### Word Lists
 
@@ -310,7 +305,9 @@ News scraping is normally executed by the scheduler from active OSINT sources. N
 
 ### Graphs
 
-Canonical graph routes are exposed under `/api/v1/graphs`. A legacy `/api/v1/graph` alias is also mounted for frontend compatibility and is hidden from the OpenAPI schema.
+Graph routes are available under `/api/v1/graphs`.
+
+A legacy `/api/v1/graph` alias is also available for frontend compatibility.
 
 | Method | Path | Description |
 | --- | --- | --- |
@@ -412,7 +409,7 @@ Compile all Python modules:
 uv run python -m compileall app
 ```
 
-## Common Development Commands
+## Development Commands
 
 ```bash
 # Install dependencies
@@ -433,48 +430,3 @@ uv run ruff check app tests
 # Run tests
 uv run pytest
 ```
-
-## Security Notes
-
-- Do not reuse the default admin credentials outside local development.
-- Replace `SECRET_KEY` with a long, random secret.
-- Do not use `ALLOWED_ORIGINS=["*"]` in production.
-- Keep `.env` out of version control.
-- Uploaded files are served from `/static`; validate deployment exposure and storage policies before production use.
-- The scraper fetches third-party web content. Use reasonable intervals and respect source availability, robots policies, and applicable law.
-
-## Troubleshooting
-
-### The API starts but `/docs` shows authentication errors
-
-Login through `/api/v1/auth/login` and use the returned bearer token in Swagger UI's Authorize dialog.
-
-### Database tables are missing
-
-Run:
-
-```bash
-uv run alembic upgrade head
-```
-
-### Login fails with the default user
-
-Create or reset the default user:
-
-```bash
-uv run python default_user.py
-```
-
-### Scraping is not producing news
-
-Check that:
-
-- At least one OSINT source exists.
-- The source is active.
-- The source URL is reachable from the backend environment.
-- `FETCH_INTERVAL_MINUTES` is configured as expected.
-- Logs do not show extraction or network errors.
-
-### Uploaded files are not available
-
-Check that the `static/uploads/notes` and `static/uploads/records` directories exist and that the process has write permissions.
