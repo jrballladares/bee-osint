@@ -76,21 +76,12 @@ uv run alembic upgrade head
 
 Review generated migrations before committing them.
 
-## Security Guidelines
-
-- Do not commit `.env` files, secrets, credentials, tokens, or private data.
-- Do not reuse the default development admin account in production.
-- Validate uploaded file handling and external URLs carefully.
-- Keep scraping intervals reasonable and respect applicable laws, source availability, and robots policies.
-- Report security issues privately to the project maintainers instead of opening a public issue.
-
 ## Pull Request Checklist
 
 - The change has a clear purpose.
 - Relevant tests or build checks pass.
 - Documentation is updated when needed.
 - Database migrations are included when models change.
-- No secrets, local files, build artifacts, or generated noise are committed.
 - The root `LICENSE` and this contribution guide remain the authoritative shared project documents.
 
 ## License
