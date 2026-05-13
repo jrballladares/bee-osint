@@ -25,7 +25,6 @@ import {
   CButton,
   CCard,
   CCardBody,
-  CCardHeader,
   CFormInput,
   CFormLabel,
   CFormSelect,
@@ -46,7 +45,6 @@ import {
 
 import CIcon from "../../lib/Icon.js";
 import {
-  cilChartLine,
   cilDescription,
   cilExternalLink,
   cilFolderOpen,
@@ -1237,10 +1235,6 @@ const Graph = () => {
       return name.includes(term) || graphId.includes(term);
     });
   }, [graphs, graphSearch]);
-
-  const currentGraphName =
-    graphs.find((graph) => Number(graph.id) === Number(selectedGraphId))
-      ?.name || `ID ${selectedGraphId}`;
 
   const selectedElementSourceUrl =
     selectedElement?.isNode && selectedElement.type === "news"

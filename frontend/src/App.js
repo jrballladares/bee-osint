@@ -44,7 +44,6 @@ const App = () => {
 
     if (isColorModeSet()) return
     setColorMode(storedTheme)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

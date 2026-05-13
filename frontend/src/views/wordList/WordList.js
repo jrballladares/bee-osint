@@ -143,21 +143,6 @@ const countBy = (items, getKey) => {
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 };
 
-const WordListTerms = ({ title, terms = [] }) => (
-  <div className="word-list-term-group">
-    <strong>{title}</strong>
-    {terms.length ? (
-      <div className="word-list-tags">
-        {terms.map((term) => (
-          <span key={term}>{term}</span>
-        ))}
-      </div>
-    ) : (
-      <em>No data</em>
-    )}
-  </div>
-);
-
 const WordListNewsItem = ({ item }) => {
   const news = item?.news || {};
   const source = normalizeText(news.source_name) || "Unknown source";
@@ -332,7 +317,10 @@ const WordList = () => {
     createWordList.mutate(payload);
   };
 
-  const wordListNews = selectedWordList?.news || [];
+  const wordListNews = useMemo(
+    () => selectedWordList?.news || [],
+    [selectedWordList?.news],
+  );
   const allTerms = getAllTerms(selectedWordList);
   const topSources = useMemo(
     () =>

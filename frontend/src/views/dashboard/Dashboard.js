@@ -3,13 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import Chart from "react-apexcharts";
 import api from "../../lib/axios";
 
-const parseDateSafe = (value) => {
-  if (!value) return null;
-
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? null : date;
-};
-
 const formatNumber = (value) => {
   const number = Number(value);
   return Number.isFinite(number)
@@ -44,7 +37,7 @@ const sentimentLabels = {
   negative: "Negative",
 };
 
-const KpiCard = ({ icon, label, value, meta }) => (
+const KpiCard = ({ icon, label, value }) => (
   <article className="dashboard-kpi-card">
     <div className="dashboard-kpi-card__icon">
       <i className={`bi ${icon}`}></i>

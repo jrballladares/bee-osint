@@ -318,6 +318,19 @@ export const COffcanvas = ({
   children,
   ...props
 }) => {
+  React.useEffect(() => {
+    if (!visible || !onHide) return undefined
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onHide()
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [visible, onHide])
+
   if (!visible) return null
 
   return (

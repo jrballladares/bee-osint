@@ -33,14 +33,12 @@ import {
   cilEnvelopeClosed,
   cilFingerprint,
   cilGlobeAlt,
-  cilInfo,
   cilLocationPin,
   cilPencil,
   cilPhone,
   cilPlus,
   cilTrash,
   cilUser,
-  cilWarning,
   cilZoom,
 } from "../../lib/icons.js";
 
