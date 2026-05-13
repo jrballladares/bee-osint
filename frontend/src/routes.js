@@ -20,16 +20,16 @@ const RootRedirect = () => <Navigate to="/dashboard" replace />;
 const Dashboard = React.lazy(() => import("./views/dashboard/Dashboard"));
 
 // Application Modules
-const News = React.lazy(() => import("./views/news/News"));
-const Notes = React.lazy(() => import("./views/notes/Notes"));
-const Records = React.lazy(() => import("./views/records/Records"));
+const News = React.lazy(() => import("./views/news/news"));
+const Notes = React.lazy(() => import("./views/notes/notes"));
+const Records = React.lazy(() => import("./views/records/records"));
 const OsintSources = React.lazy(
   () => import("./views/osintSources/OsintSources"),
 );
 const WordList = React.lazy(() => import("./views/wordList/WordList"));
 
 // Analytics
-const Graph = React.lazy(() => import("./views/graph/Graph"));
+const Graph = React.lazy(() => import("./views/graph/graph"));
 
 const routes = [
   // Root redirect
