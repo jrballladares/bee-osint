@@ -464,8 +464,6 @@ Check browser console errors and verify that graph data is available from the ba
 
 Vite may warn that graph or dashboard chunks are large because Cytoscape and chart libraries are heavy. This is a warning, not a build failure. Future optimization can split graph/dashboard modules with dynamic imports or manual chunks.
 
-## License
-
-The frontend is covered by the repository-level Apache License 2.0. See [`../LICENSE`](../LICENSE) for the authoritative license terms.
+## Contributing
 
 Contribution guidelines are centralized at [`../CONTRIBUTING.md`](../CONTRIBUTING.md).

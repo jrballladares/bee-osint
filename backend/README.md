@@ -479,8 +479,6 @@ Check that:
 
 Check that the `static/uploads/notes` and `static/uploads/records` directories exist and that the process has write permissions.
 
-## License
-
-The backend is covered by the repository-level Apache License 2.0. See [`../LICENSE`](../LICENSE) for the authoritative license terms.
+## Contributing
 
 Contribution guidelines are centralized at [`../CONTRIBUTING.md`](../CONTRIBUTING.md).
