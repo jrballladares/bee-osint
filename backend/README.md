@@ -120,8 +120,16 @@ FETCH_INTERVAL_MINUTES=30
 
 From the backend directory:
 
+Install dependencies:
+
 ```bash
 uv sync
+```
+
+Generate the initial migration:
+
+```bash
+uv run alembic revision --autogenerate -m "initial schema"
 ```
 
 Run migrations:
