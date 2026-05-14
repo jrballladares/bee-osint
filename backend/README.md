@@ -423,13 +423,16 @@ uv run python -m compileall app
 # Install dependencies
 uv sync
 
+# Generate a new migration
+uv run alembic revision --autogenerate -m "initial schema"
+
 # Apply database migrations
 uv run alembic upgrade head
 
-# Create default admin user
-uv run python default_user.py
+# Create or update a user interactively
+uv run python -m app.scripts.create_user
 
-# Start local API with reload
+# Start local API with auto-reload
 uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 
 # Run lint checks
@@ -437,4 +440,3 @@ uv run ruff check app tests
 
 # Run tests
 uv run pytest
-```
